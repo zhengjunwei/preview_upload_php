@@ -6,3 +6,28 @@
 - 这个类好像是针对根目录写的，还需要用常量来拼一个正确的地址
 
 不过，基本上是可以解决预览加上传问题了
+
+附带一个如何服务器给本地传base64方法
+$img_file = file_get_contents("http://www.oschina.net/img/logo_s2.png");
+echo base64_encode($img_file);
+
+<input type="button" id="btn" value="免费获取验证码" />  
+<script type="text/javascript">  
+var wait=60;  
+function time(o) {  
+        if (wait == 0) {  
+            o.removeAttribute("disabled");            
+            o.value="免费获取验证码";  
+            wait = 60;  
+        } else {  
+            o.setAttribute("disabled", true);  
+            o.value="重新发送(" + wait + ")";  
+            wait--;  
+            setTimeout(function() {  
+                time(o)  
+            },  
+            1000)  
+        }  
+    }  
+document.getElementById("btn").onclick=function(){time(this);}  
+</script>  
